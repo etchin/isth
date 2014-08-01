@@ -1,0 +1,7 @@
+python nnpred.py data-imputed-allvars.csv -layers 1 -hfactor 1.5 -reg 0.001 -test 100
+Average success rate: 91.87 %
+Standard deviation  : 3.31 %
+
+python logpred.py data-imputed-allvars.csv -reg 0.08 -bfgs -test 100
+Average success rate: 91.4 %
+Standard deviation  : 2.99 %

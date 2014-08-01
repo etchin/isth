@@ -1,7 +1,7 @@
 ''' Converts the ISTH dataset in Zye format to Mirador 1.1 project format 
 '''
 
-import sys, csv, codecs
+import sys, os, csv, codecs
 from xml.dom.minidom import parseString
 import xml.etree.ElementTree as ET
 
@@ -54,6 +54,9 @@ var_names = []
 var_aliases = {}
 var_types = {}  
 var_ranges = {}
+
+if os.path.isfile("mirador/data.bin"):
+    os.remove("mirador/data.bin")
 
 # Writing file in utf-8 because the input html files from
 # NHANES website sometimes have characters output the ASCII range.

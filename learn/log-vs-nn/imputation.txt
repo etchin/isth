@@ -1,0 +1,25 @@
+# missing data imputation with Amelia:
+# http://gking.harvard.edu/amelia/
+
+library(Amelia)
+
+lassa <- read.table('data.tsv', sep = "\t", header=TRUE, na.strings="\\N")
+
+# List of nominal variables
+nom_vars = c("OUTCOME", "CNS.Sev.", "ENCPHPTHY", "ARF", "HPTN", "DIAL", "DBTS", "BLDING", "HRTFL", "PRTNURIA", "SWELLING", "CNS.NSev.", "JNDC", "HDCH")
+
+a.out <- amelia(lassa, m = 5, noms = nom_vars)
+
+# Compare observed density with imputed density
+compare.density(a.out, var = "PRTNURIA")
+compare.density(a.out, var = "RDWP1")
+
+# "Quality" of imputation
+overimpute(a.out, var = "PRTNURIA")
+overimpute(a.out, var = "RDWP1")
+
+# Missingness map
+missmap(a.out)
+
+# Save imputed data
+write.amelia(obj=a.out, file.stem="data-imputed", format="csv")
