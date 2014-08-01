@@ -1,3 +1,10 @@
 mirador/
 network/
 zye/
+learn/high-risk/
+learn/lab/
+learn/log-vs-nn/*.csv
+learn/log-vs-nn/*.tsv
+learn/low-risk/
+learn/test/
+learn/train/
